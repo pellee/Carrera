@@ -10,8 +10,6 @@ namespace Carrera
     {
         static void Main(string[] args)
         {
-            Carrera carrera = new Carrera();
-            carrera.CrearEtapa();
         }
     }
 }

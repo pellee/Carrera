@@ -10,8 +10,5 @@ namespace Carrera
     {
         public DateTime FechaEtapa { get; set; }
         public int KilometroEtapa { get; set; }
-
-
-
     }
 }

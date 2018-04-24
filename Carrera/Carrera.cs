@@ -73,8 +73,6 @@ namespace Carrera
 
         public void CrearEtapa()
         {
-            Console.WriteLine(etapas.Count());
-
             var etapa = new Etapa();
             int i = 0;
 
@@ -89,6 +87,47 @@ namespace Carrera
                 etapas[i] = etapa;
             else
                 Console.WriteLine("Ya estan todas las etapas");
+        }
+
+        private Corredor BuscarGanador()
+        {
+            var aux = new Corredor();
+
+            for (int i = 0; i < corredores.Count; i++)
+            {
+
+                if (i == 0)
+                    aux = corredores[i];
+
+                if (aux.Tiempo > corredores[i].Tiempo)
+                    aux = corredores[i];
+            }
+
+            return aux;
+        }
+
+        public void InicioCarrera()
+        {
+            foreach (var e in etapas) {
+                var aux = new Corredor();
+
+                Console.WriteLine(e.FechaEtapa + "  " + e.KilometroEtapa);
+
+                foreach (var c in corredores) {
+                    Console.WriteLine("Ingrese el tiempo del corredor " + c.Nombre + " " + c.Apellido);
+                    c.Tiempo = double.Parse(Console.ReadLine());
+                }
+
+                aux = BuscarGanador();
+
+                Console.WriteLine("El ganador es: " + aux.Nombre + " del equipo " + aux.RefEquipo.NombreEqui);
+
+                foreach (var eq in equipos) {
+                    eq.PromEquipo(corredores);
+
+                    Console.WriteLine("El promedio de carrera del equipo " + eq.NombreEqui + "  fue de: " + eq.PromEqui);
+                }
+            }
         }
 
     }

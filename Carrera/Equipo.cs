@@ -13,6 +13,21 @@ namespace Carrera
         public double PromEqui { get; set; } = 0;
 
 
+        public void PromEquipo(List<Corredor> corredores)
+        {
+            int i = 0;
+
+            foreach (var c in corredores)
+            {
+                if (Id == c.RefEquipo.Id) {
+                    PromEqui += c.Tiempo;
+                    i++;
+                }
+            }
+
+            PromEqui = PromEqui / i;
+        }
+
 
     }
 }
